@@ -53,7 +53,7 @@ export default{
     loading: false,
     saxloading: null,
     selected_day: '',
-    api: 'http://34.243.245.127:8013'
+    api: 'https://lb2-c3a7569f3ecce3e1.elb.eu-west-1.amazonaws.com'
   }),
   mounted() {
     this.loadData()
