@@ -52,7 +52,8 @@ export default{
     days: {},
     loading: false,
     saxloading: null,
-    selected_day: ''
+    selected_day: '',
+    api: 'http://34.243.245.127:8013'
   }),
   mounted() {
     this.loadData()
@@ -67,12 +68,12 @@ export default{
     voteDay(day){
       let date = day.split(' - ')[1]
       this.loading = true
-      axios.post('http://127.0.0.1:8000/vote/' + this.logged_user + '/' + date + '/', {'fb_id': this.fb_user_id})
+      axios.post(this.api + '/vote/' + this.logged_user + '/' + date + '/', {'fb_id': this.fb_user_id})
           .then(r => {this.loadData();})
       
     },
     loadData(){
-      axios.get('http://127.0.0.1:8000/vote/' + this.logged_user + '/')
+      axios.get(this.api + '/vote/' + this.logged_user + '/')
           .then(r => {this.days=r.data; this.loading=false;
             if(this.saxloading){
               this.saxloading.close()
@@ -91,7 +92,7 @@ export default{
     },
     removeDay(id){
       this.loading = true
-      axios.delete('http://127.0.0.1:8000/vote/delete/' + this.logged_user + '/' + id + '/')
+      axios.delete(this.api + '/vote/delete/' + this.logged_user + '/' + id + '/')
           .then(r => {this.loadData();})
     },
     isInDate(item){
