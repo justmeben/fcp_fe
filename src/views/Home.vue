@@ -53,7 +53,7 @@ export default{
     loading: false,
     saxloading: null,
     selected_day: '',
-    api: 'https://lb2-c3a7569f3ecce3e1.elb.eu-west-1.amazonaws.com'
+    api: 'https://socap.bentzy.io'
   }),
   mounted() {
     this.loadData()
